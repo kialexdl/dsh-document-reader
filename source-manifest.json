@@ -1,8 +1,8 @@
 {
   ".gitignore": "b74b99edfbaaeee7ed3da96c849a0a9b5717cef5e3698703e087877bf9ebf6b9",
   "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-  "NOTICE": "f94edee475272aa98082ec07b630c2c6251de8d1069828823014f77a1ed0fe26",
-  "README.md": "63e9c6e4389fac69131169ec96a7306da7d6f3749b4767b67b8b241aeec13e6e",
+  "NOTICE": "d086c2edad0d35f60b6199c357c28c0fab422d5a239d576408a8d01f696932de",
+  "README.md": "4fde152ef1ed02ab73f8f035027d7b0f5b58171d8a85d10172fcb3592145d620",
   "cordis.patch.yml": "1f3e88c4f6f04b139027540835779110f03468eb47bf327348bfa4e962d7420f",
   "docs/compatibility-0.1.1.md": "2431729b3397611f605bc5ef31dd0121f1f7a38136a769ce950122b5318cc65c",
   "docs/configuration.md": "aede70cba861b7f28e8dd486b7a88e77155718c6dee9555f8e43b96f4d2669b8",
@@ -19,7 +19,7 @@
   "docs/upgrade-0.3.3.md": "d2b6c693489ac448c41785dd3a8511d3a4b56c0b9ad9ad529b2585d3a92b6cc1",
   "docs/upgrade-0.3.4.md": "696650f3fb588748964e1a802a8fc32fd71479c3a69d440de5778e9f768e0fd4",
   "docs/validation.md": "ae0f3b86b2ecc3a23e85e0ceb2bc22f03e9d4e138635834d82d01689254c4c5c",
-  "package.json": "ed2a950881fbe9c8d74d68065ae99a9b0e3588d2620178414dd76603f4e5ffc1",
+  "package.json": "bda38a210d3d7ed5813bc6c458a55df0f6b4fd3bd20ef28a997d47ab96cf6507",
   "pnpm-lock.yaml": "ad82d168c2cfddae2604f77363239cb9727f654d669d1ee08f2d9c414f8e13af",
   "pnpm-workspace.yaml": "9f020145450f3db54040be40e49a7c5374d6a6e015724e4d5fe17adb8a42bea8",
   "prompts/image-combined.txt": "2961e0c5231cd1b1de57d9b9496e450258488b22742788b05962ec352fecae23",
@@ -35,8 +35,8 @@
   "scripts/benchmark-word.ts": "157b838f240304a99960f3d6a500286b685c6d56680418b8bb35e142d550bc19",
   "scripts/build-client.mjs": "07a0d44fe9b8bf7486ecb884ae9395323fe48b2587ec7d09befed736469cb5c5",
   "scripts/build_wheels.py": "e14b0806a4e7597e8ddb411e5fffc7e43ae664bf9a4750914df5a3c3c3f61b6c",
-  "scripts/check-package.mjs": "b57bb1f17a0ccdb6e37d62543a635065230afd647ffb6372da0fcb8e574bf8f2",
-  "scripts/package-source.py": "67382a1701906223afa38d036e98a2ed1de3406b4656ce03e10b1489493b0177",
+  "scripts/check-package.mjs": "0765dc4df4d8ad2c15aa95965dcd8d2c448fe817224109760dce9470f3ef0383",
+  "scripts/package-source.py": "6c4b45d143068b3f963552946b86a2ff1a3d40b929c7b03d4aed7352922ea060",
   "scripts/secure-temp.ps1": "e70d70f4ad20e3e649a4cc72a3426396738adb9f1712dd633bf0bb0e013a2f7e",
   "scripts/setup-python.ps1": "25b0db7041c4daa8f2663563c16af790292f4e639ce4cc8135329bb56f65cbe3",
   "scripts/setup-python.sh": "9577c12900d9abf82e178d309736841ce3368cea9fc8e54680b088a75c623211",
@@ -73,5 +73,8 @@
   "tests/test_bridge.py": "bad36f9584ba559f2a4943c3603186f3775f35bec223ae90f67b5672da20685d",
   "tests/test_progressive_images.py": "0c243e7523eeafd1464ff0eaf3108fc9de6eb4786f68b57b58a23ff802f879f2",
   "tests/vision.test.ts": "4bebd34231ae71291d7af3093bd39b605dcbb05578def259b296fc98a4d2181d",
-  "tsconfig.json": "00d9eacfef5afe9356a4e6e693d0133ae9e24cc106d7e5d19205651b718852e8"
+  "tsconfig.json": "00d9eacfef5afe9356a4e6e693d0133ae9e24cc106d7e5d19205651b718852e8",
+  "THIRD_PARTY_NOTICES.md": "0ae3ec13f573da638d9cc0a5b1e27696d5885e227d4e8fe917aacc734b7fbb89",
+  "licenses/MarkItDown-MIT.txt": "c075a7fdbcff0157cf50a2c2b54c7190e36e0215ec5b9145988fdd1f9efb869b",
+  "licenses/Zod-MIT.txt": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
 }

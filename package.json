@@ -27,7 +27,9 @@
     "README.md",
     "docs",
     "LICENSE",
-    "NOTICE"
+    "NOTICE",
+    "THIRD_PARTY_NOTICES.md",
+    "licenses"
   ],
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

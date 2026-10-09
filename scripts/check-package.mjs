@@ -25,6 +25,7 @@ const required = [
   manifest.exports["./client"].default.replace(/^\.\//, ""),
   manifest.exports["./client"].types.replace(/^\.\//, ""),
   "cordis.patch.yml", "LICENSE", "NOTICE",
+  "THIRD_PARTY_NOTICES.md", "licenses/MarkItDown-MIT.txt", "licenses/Zod-MIT.txt",
   "python/markitdown_bridge.py", "python/stable_compat.py", "python/prepare_image.py",
   "python/requirements.txt", "python/constraints.lock", "python/upstream-hashes.json",
   "scripts/setup_python.py", "scripts/setup-python.ps1", "scripts/setup-python.sh", "scripts/secure-temp.ps1",

@@ -1,5 +1,24 @@
-dsh-document-reader 0.1.2
-This source package contains the plugin's source, tests and documentation.
-DSH and Microsoft MarkItDown are external dependencies. Their source and binary
-packages are not included in this source archive. See the pinned dependency
-manifests and upstream repositories for their respective licenses and notices.
+dsh-document-reader
+
+The project's own code is licensed under the Apache License, Version 2.0.
+Third-party components retain their original licenses and copyrights.
+
+Microsoft MarkItDown 0.1.7 and markitdown-ocr 0.1.0
+Copyright (c) Microsoft Corporation.
+Licensed under the MIT License; see licenses/MarkItDown-MIT.txt.
+Upstream: https://github.com/microsoft/markitdown
+The plugin's Python bridge and adapters use and extend upstream converters.
+The upstream distributions are installed separately, not included in this
+repository or the plugin's source, GitHub-ready ZIP or npm package.
+
+Zod 4.4.3
+Copyright (c) 2025 Colin McDonnell
+Licensed under the MIT License; see licenses/Zod-MIT.txt.
+Upstream: https://github.com/colinhacks/zod
+Zod code is included in the prebuilt lib/client.js browser bundle.
+
+DSH and other external dependencies retain their respective licenses.
+markitdown-ocr also declares PyMuPDF, which is available under the GNU AGPL
+version 3 or an Artifex commercial license. This project's Apache license does
+not replace the obligations applicable to that dependency or a combined work.
+See THIRD_PARTY_NOTICES.md for scope, source links and redistribution notes.

@@ -14,8 +14,8 @@ version=json.loads((root/'package.json').read_text())['version']
 kind='github' if args.include_built else 'source'
 output=root/'dist'/f'dsh-document-reader-{version}-{kind}.zip'
 output.parent.mkdir(exist_ok=True)
-allowed_dirs={'src','python','prompts','scripts','tests','docs'}
-allowed_root={'package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.json','cordis.patch.yml','README.md','LICENSE','NOTICE','.gitignore'}
+allowed_dirs={'src','python','prompts','scripts','tests','docs','licenses'}
+allowed_root={'package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.json','cordis.patch.yml','README.md','LICENSE','NOTICE','THIRD_PARTY_NOTICES.md','.gitignore'}
 allowed_extensions={'.ts','.tsx','.css','.mjs','.py','.ps1','.sh','.md','.txt','.json','.lock','.yml','.yaml'}
 if args.include_built:
     allowed_dirs.add('lib')

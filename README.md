@@ -2,6 +2,19 @@
 
 DSH 原生文档读取与关键词查找插件。支持 PDF、DOCX、PPTX、XLSX、XLS、CSV、PNG/JPEG；在原生插件页面选择 DSH 已配置的服务商与图片模型，通过 DSH 统一调用；不继承或自动选择主会话模型。旧独立端点配置仍兼容。
 
+## 开源依赖与许可证
+
+本插件的文档转换能力基于 Microsoft 的 [MarkItDown](https://github.com/microsoft/markitdown)，当前固定使用 `markitdown==0.1.7`；图片文字识别相关能力使用同一上游项目的 [markitdown-ocr 0.1.0](https://pypi.org/project/markitdown-ocr/0.1.0/)。感谢上游维护者与贡献者。本项目是独立的 DSH 插件，不代表 Microsoft 官方产品，也不表示获得其背书。
+
+MarkItDown 负责原生文档转换；本插件提供 DSH 工具接入、关键词定位、分页读取、图片模型配置、渐进解析、同步读图和缓存，并通过 Python 适配层扩展上游转换器。
+
+- 本项目自身代码采用 [Apache License 2.0（Apache 2.0 开源许可证）](LICENSE)。第三方组件继续适用其原有许可证，不因本项目许可而被重新许可。
+- MarkItDown 和 markitdown-ocr 采用 MIT（Massachusetts Institute of Technology，麻省理工学院宽松开源许可证）。仓库保留 Microsoft 版权声明与完整许可文本：[MarkItDown MIT 许可](licenses/MarkItDown-MIT.txt)。使用这些依赖不要求将本项目自身许可改为 MIT。
+- 前端预构建产物包含 Zod 4.4.3，其 MIT 版权声明与完整许可文本见 [Zod 许可](licenses/Zod-MIT.txt)。
+- **间接依赖许可边界：** markitdown-ocr 0.1.0 的发布包还声明了 PyMuPDF 依赖，本项目 Python 锁文件固定为 1.28.2。PyMuPDF 采用 GNU AGPL（GNU Affero General Public License，GNU Affero 通用公共许可证）第 3 版或 Artifex 商业许可；不能将整套运行环境认定为仅受 MIT / Apache 2.0 约束。涉及其组合使用、再分发或网络服务时，必须满足适用的 AGPL 义务，或取得覆盖该用途的商业许可；保留本项目 Apache 2.0 声明、公开本仓库或添加致谢本身并不能替代这些义务。
+
+当前仓库不随包分发 MarkItDown、markitdown-ocr 或 PyMuPDF 的第三方代码和二进制；它们由安装脚本另行安装。完整说明、来源和再分发要求见 [第三方许可说明](THIRD_PARTY_NOTICES.md) 与 [版权声明](NOTICE)。如果需要适用于闭源产品的全宽松许可证依赖链，应先替换或移除 PyMuPDF 这项依赖并重新验证，不能只修改许可证文字。
+
 ## 版本与交付范围
 
 - 插件：0.3.4。
