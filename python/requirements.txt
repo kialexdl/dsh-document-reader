@@ -1,0 +1,5 @@
+# Published distributions; no Git checkout or unreleased source snapshot required.
+markitdown[pdf,docx,pptx,xlsx,xls]==0.1.7
+markitdown-ocr==0.1.0
+pypdf==6.10.0
+openai==2.29.0

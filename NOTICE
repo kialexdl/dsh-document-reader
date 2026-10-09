@@ -1,0 +1,5 @@
+dsh-document-reader 0.1.2
+This source package contains the plugin's source, tests and documentation.
+DSH and Microsoft MarkItDown are external dependencies. Their source and binary
+packages are not included in this source archive. See the pinned dependency
+manifests and upstream repositories for their respective licenses and notices.

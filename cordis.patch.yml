@@ -1,0 +1,3 @@
+- insert:
+    - id: document-reader
+      name: dsh-document-reader
