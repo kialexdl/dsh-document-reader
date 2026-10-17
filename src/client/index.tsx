@@ -158,7 +158,7 @@ export function ReaderSettings({
       setCatalogStatus(
         result.value.failures.length
           ? "部分服务商或模型能力读取失败，可刷新重试。"
-          : "仅列出已配置模型；模型需在输入类型中声明支持图片。",
+          : "仅列出当前可用模型；模型需声明支持图片。新版 DSH 会隐藏缺少密钥的模型，请先在模型设置中配置凭据。",
       );
     } catch {
       if (!mounted.current || token !== generation.current) return;

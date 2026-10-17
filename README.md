@@ -17,8 +17,8 @@ MarkItDown 负责原生文档转换；本插件提供 DSH 工具接入、关键�
 
 ## 版本与交付范围
 
-- 插件：0.3.4。
-- DSH 验证基线：0.2.1-alpha.1，commit（提交）`5badb15009ae1756c3afe0ae0cef1faafc290ccc`。宿主兼容范围为 `>=0.2.0-rc.2 <0.3.0-0`；构建依赖继续固定该验证基线。
+- 插件：0.3.5。
+- DSH 适配基线：0.2.1-rc.2，提交 `687f282e8625c6b8d11ff58211a90524be2e4317`。宿主兼容范围保持 `>=0.2.0-rc.2 <0.3.0-0`，同时声明 `engines.dsh`（宿主版本范围）与旧版宿主依赖范围。核心依赖固定 0.2.1-rc.2，本次安装时尚未发布该版本的客户端及控制器包固定 0.2.1-rc.1；具体版本见锁文件。旧版本范围声明不代表已逐个执行整体验证。
 - Python 发布包：`markitdown==0.1.7`、`markitdown-ocr==0.1.0`，从 PyPI（Python Package Index，Python 软件包索引）安装；不使用未发布源码快照。
 - Node：`^22.19.0 || >=24.0.0`；推荐 Python 3.12，安装锁定依赖与本次测试均使用 3.12。
 - 纯源码 ZIP 不含 `node_modules`、`lib`、Python 环境、wheels 或第三方源码；用于本地开发，需要安装依赖并构建。
@@ -26,7 +26,7 @@ MarkItDown 负责原生文档转换；本插件提供 DSH 工具接入、关键�
 
 ## 在 DSH 界面通过 GitHub 地址安装
 
-安装仓库：[kialexdl/dsh-document-reader](https://github.com/kialexdl/dsh-document-reader)。仓库根目录包含 0.3.4 源码及同版本预构建产物，可通过 DSH 插件页面安装。
+安装仓库：[kialexdl/dsh-document-reader](https://github.com/kialexdl/dsh-document-reader)。仓库包含 0.3.5 源码及同版本预构建产物，可通过 DSH 插件页面使用仓库地址安装。
 
 1. 使用 **DSH 0.2.0-rc.2 或上述兼容范围内的版本**，在实际要使用的配置档中打开侧栏 **插件 → 添加插件 → 安装第三方插件**。
 2. 粘贴 `https://github.com/kialexdl/dsh-document-reader`，点击 **安装**。
@@ -80,6 +80,10 @@ dsh --profile document-reader-test
 必须已有上述兼容范围内的 DSH，以及 `tools`、`fs`、`subprocess` 服务。插件的 npm peerDependencies 不会替你在 profile 中注册这些服务。若使用自己的最小 profile，也需注册工具运行时依赖的 `systemPrompt`。
 
 更新源码后执行 `pnpm install --frozen-lockfile`、`pnpm build` 并重启 profile；Python 锁文件/源码基线变化时，重新运行安装脚本。
+
+## 0.3.5：适配 DSH 0.2.1-rc.2
+
+增加新版宿主版本声明，更新 DSH 核心依赖、Cordis 4.0.5 和 Schemastery 3.18.5；适配测试中的客户端模块入口、调用方身份与交互权限。模型配置页补充缺少凭据时模型不可见的提示。保留同步读图、渐进搜索和原有 Python 依赖。安装与验证细节见 [0.3.5 适配说明](docs/upgrade-0.3.5.md)。
 
 ## 0.3.4：指定图片直接同步解析
 
@@ -261,7 +265,7 @@ pnpm package:github
 
 PowerShell 对应环境变量：`$env:DOCUMENT_READER_TEST_PYTHON = 'C:\...\python.exe'`，再执行 `pnpm test`。未设置该变量时，集成测试会明确标为 skipped。
 
-打包脚本只收集源码、锁文件、文档、测试源码和脚本；输出 `dist/dsh-document-reader-0.3.4-source.zip`。需要可安装 npm 归档时，构建后可自行执行 `pnpm pack`。
+打包脚本只收集源码、锁文件、文档、测试源码和脚本；输出 `dist/dsh-document-reader-0.3.5-source.zip`。需要可安装 npm 归档时，构建后可自行执行 `pnpm pack`。
 
 内网离线部署可在与目标机器相同 OS/架构/Python 的联网环境执行：
 

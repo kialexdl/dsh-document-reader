@@ -3,6 +3,7 @@ import LlmRuntime from "@deepseek-ai/dsh-llm";
 import * as PiAi from "@deepseek-ai/dsh-llm-pi-ai";
 import Registry from "@deepseek-ai/dsh-typert-registry";
 import Gateway from "@deepseek-ai/dsh-api-gateway";
+import RemoteAccess from "@deepseek-ai/dsh-api-remote-access";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { ReaderModels } from "../src/model-catalog.js";
@@ -16,6 +17,8 @@ import { pathToFileURL } from "node:url";
 
 const require = createRequire(import.meta.url);
 export function clientBundle(specifier: string): any {
+  // Current DSH exposes a Node module separately from its browser loader bundle.
+  if (specifier.startsWith("@deepseek-ai/")) return require(specifier);
   let exported: any;
   new Function("window", readFileSync(require.resolve(specifier), "utf8"))({
     __ModuleLoader__: {
@@ -56,6 +59,12 @@ export const providerConfig = {
 
 /** Real host/client Gateways and pi-ai; only the physical carrier is in-process. */
 export async function catalogFixture(fullPlugin = false) {
+  const previousKey = process.env.CODEAGENT_API_KEY;
+  process.env.CODEAGENT_API_KEY = "document-reader-test-only-no-inference";
+  const restoreKey = () => {
+    if (previousKey === undefined) delete process.env.CODEAGENT_API_KEY;
+    else process.env.CODEAGENT_API_KEY = previousKey;
+  };
   const host = new Context(),
     client = new Context();
   let temporaryRoot: string | undefined;
@@ -63,7 +72,14 @@ export async function catalogFixture(fullPlugin = false) {
     claim: (endpoint: string) => boolean;
     run: Function;
   }>();
-  const peer = { id: "test-operator", ctx: host, dispose: async () => {} };
+  const peer = {
+    id: "test-operator",
+    ctx: host,
+    principal: { kind: "owner" },
+    signal: new AbortController().signal,
+    interactions: "answer",
+    dispose: async () => {},
+  };
   const calls: string[] = [];
   class HostConnection extends Service {
     operator = peer;
@@ -83,6 +99,7 @@ export async function catalogFixture(fullPlugin = false) {
     }
   }
   class ClientConnection extends Service {
+    interactions = "answer" as const;
     rpc = {
       open: () => {
         throw Error("No stream required by catalog tests");
@@ -116,6 +133,7 @@ export async function catalogFixture(fullPlugin = false) {
   try {
     await host.plugin(Registry);
     await host.plugin(HostConnection);
+    await host.plugin(RemoteAccess);
     await host.plugin(Gateway);
     await host.plugin(LlmRuntime);
     await host.plugin(PiAi, { providers: providerConfig });
@@ -165,6 +183,7 @@ export async function catalogFixture(fullPlugin = false) {
       async close() {
         await client.fiber.dispose();
         await host.fiber.dispose();
+        restoreKey();
         if (temporaryRoot)
           await rm(temporaryRoot, { recursive: true, force: true });
       },
@@ -172,6 +191,7 @@ export async function catalogFixture(fullPlugin = false) {
   } catch (error) {
     await client.fiber.dispose();
     await host.fiber.dispose();
+    restoreKey();
     if (temporaryRoot)
       await rm(temporaryRoot, { recursive: true, force: true });
     throw error;
